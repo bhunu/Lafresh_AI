@@ -128,6 +128,203 @@ const TESTIMONIALS = [
   },
 ]
 
+const HERO_SLIDES = [
+  {
+    id: 'maize',
+    tag: '🥕 Seasonal Harvest',
+    title: 'Farm Fresh Vegetables',
+    subtitle: 'Straight from the soil to your table',
+    statement:
+      'A rich harvest of seasonal vegetables — tomatoes, cucumbers, beetroot, red peppers, squash and more — hand-picked at peak ripeness and delivered fresh to homes, markets, and restaurants.',
+    image: '/slides/maize.jpg',
+    fallback: 'linear-gradient(135deg, #6b3a0c 0%, #92400e 35%, #b45309 65%, #78350f 100%)',
+    overlay: 'rgba(8, 18, 5, 0.50)',
+    primary: '🥦',
+    decor: ['🍅', '🥒', '🌶️'],
+    halo: '#fbbf24',
+  },
+  {
+    id: 'cattle',
+    tag: '🐄 Livestock',
+    title: 'Premium Beef Cattle',
+    subtitle: 'Purebred strength, superior quality',
+    statement:
+      'Our Brahman cattle are raised on open pastures — bred for hardiness, heat tolerance, and exceptional beef quality. Supplying premium cuts to local buyers and export markets across the region.',
+    image: '/slides/cattle.jpg',
+    fallback: 'linear-gradient(135deg, #1c1917 0%, #3c3530 35%, #57534e 65%, #292524 100%)',
+    overlay: 'rgba(5, 8, 3, 0.52)',
+    primary: '🐄',
+    decor: ['🌿', '🥩', '🐄'],
+    halo: '#d6d3d1',
+  },
+  {
+    id: 'roadrunners',
+    tag: '🌈 Farm Produce',
+    title: "Nature's Full Bounty",
+    subtitle: 'Every colour, every flavour',
+    statement:
+      'From sun-ripened tropical fruits to crisp garden vegetables — Lafresh grows an abundant variety of fresh farm produce for domestic markets and international export, all year round.',
+    image: '/slides/roadrunners.jpg',
+    fallback: 'linear-gradient(135deg, #14532d 0%, #065f46 35%, #0f766e 65%, #134e4a 100%)',
+    overlay: 'rgba(5, 15, 5, 0.48)',
+    primary: '🍇',
+    decor: ['🍌', '🍎', ''],
+    halo: '#fb923c',
+  },
+  {
+    id: 'goats',
+    tag: ' Livestock',
+    title: 'Goat Farming',
+    subtitle: 'Well-kept, naturally healthy',
+    statement:
+      'Our goats are raised with care in well-managed pens and open pastures — healthy, well-fed, and humanely kept. Supplying premium chevon, fresh milk, and live animals to local buyers and traders.',
+    image: '/slides/goats.jpg',
+    fallback: 'linear-gradient(135deg, #365314 0%, #4d7c0f 35%, #65a30d 65%, #3f6212 100%)',
+    overlay: 'rgba(5, 12, 3, 0.50)',
+    primary: '',
+    decor: ['🌾', '🥛', '🌿'],
+    halo: '#a3e635',
+  },
+  {
+    id: 'horticulture',
+    tag: '🌿 Horticulture',
+    title: 'Fresh Green Produce',
+    subtitle: 'Crisp, clean and export-ready',
+    statement:
+      'Crunchy cucumbers, sweet corn, broccoli, green peppers, chilies and spring onions — our horticulture division delivers the freshest greens, grown with care and certified to meet export standards.',
+    image: '/slides/horticulture.jpg',
+    fallback: 'linear-gradient(135deg, #052e16 0%, #064e3b 35%, #065f46 65%, #14532d 100%)',
+    overlay: 'rgba(3, 15, 5, 0.48)',
+    primary: '🥬',
+    decor: ['🌽', '🥒', '🫑'],
+    halo: '#34d399',
+  },
+]
+
+// ─── Preloader ────────────────────────────────────────────────────────────────
+
+function Preloader({ onDone }: { onDone: () => void }) {
+  const [hiding, setHiding] = useState(false)
+
+  useEffect(() => {
+    const t1 = setTimeout(() => setHiding(true), 2200)
+    const t2 = setTimeout(onDone, 2800)
+    return () => { clearTimeout(t1); clearTimeout(t2) }
+  }, [onDone])
+
+  return (
+    <div
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center gap-8 select-none"
+      style={{
+        background: 'linear-gradient(160deg, #052e16 0%, #064e3b 60%, #065f46 100%)',
+        animation: hiding ? 'preloader-out 0.6s ease-out forwards' : undefined,
+      }}
+    >
+      {/* Sprout graphic */}
+      <div className="relative flex-shrink-0" style={{ width: '110px', height: '155px' }}>
+        {/* Soil bar */}
+        <div
+          className="absolute bottom-0 inset-x-0 rounded-full"
+          style={{
+            height: '16px',
+            background: 'linear-gradient(90deg, #713f12 0%, #a16207 45%, #92400e 75%, #713f12 100%)',
+          }}
+        />
+
+        {/* Stem */}
+        <div
+          className="absolute"
+          style={{
+            bottom: '14px',
+            left: '50%',
+            marginLeft: '-2.5px',
+            width: '5px',
+            height: '90px',
+            background: 'linear-gradient(to top, #047857 0%, #10b981 65%, #34d399 100%)',
+            borderRadius: '3px 3px 2px 2px',
+            transformOrigin: 'bottom center',
+            animation: 'preloader-stem 1.1s cubic-bezier(0.22, 1, 0.36, 1) both',
+          }}
+        />
+
+        {/* Left leaf */}
+        <div
+          className="absolute"
+          style={{
+            bottom: '56px',
+            left: '8px',
+            width: '40px',
+            height: '24px',
+            background: 'linear-gradient(135deg, #34d399 0%, #059669 100%)',
+            borderRadius: '50% 0 50% 50%',
+            transformOrigin: 'right center',
+            animation: 'preloader-leaf-l 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s both',
+          }}
+        />
+
+        {/* Right leaf */}
+        <div
+          className="absolute"
+          style={{
+            bottom: '76px',
+            right: '8px',
+            width: '40px',
+            height: '24px',
+            background: 'linear-gradient(225deg, #34d399 0%, #059669 100%)',
+            borderRadius: '0 50% 50% 50%',
+            transformOrigin: 'left center',
+            animation: 'preloader-leaf-r 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.95s both',
+          }}
+        />
+
+        {/* Top bud */}
+        <div
+          className="absolute"
+          style={{
+            top: '6px',
+            left: '50%',
+            marginLeft: '-11px',
+            width: '22px',
+            height: '28px',
+            background: 'radial-gradient(ellipse at 35% 25%, #a7f3d0 0%, #10b981 55%, #047857 100%)',
+            borderRadius: '50% 50% 50% 0',
+            animation: 'preloader-bud 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.25s both',
+          }}
+        />
+      </div>
+
+      {/* Brand */}
+      <div
+        className="text-center"
+        style={{ animation: 'preloader-fade-in 0.7s ease-out 0.9s both' }}
+      >
+        <p className="text-2xl font-bold text-white tracking-tight mb-0.5">Lafresh</p>
+        <p className="text-[11px] font-semibold tracking-[0.35em] uppercase text-emerald-400">
+          Private Limited
+        </p>
+      </div>
+
+      {/* Loading dots */}
+      <div
+        className="flex items-center gap-2"
+        style={{ animation: 'preloader-fade-in 0.5s ease-out 1.3s both' }}
+      >
+        {[0, 1, 2].map((i) => (
+          <div
+            key={i}
+            className="rounded-full bg-emerald-500"
+            style={{
+              width: '6px',
+              height: '6px',
+              animation: `preloader-dot 1.2s ease-in-out ${i * 0.18}s infinite`,
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 
 function Navbar() {
@@ -258,93 +455,139 @@ function Navbar() {
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 
 function Hero() {
+  const [current, setCurrent] = useState(0)
+  const [paused, setPaused] = useState(false)
+
+  useEffect(() => {
+    if (paused) return
+    const id = setInterval(() => setCurrent((c) => (c + 1) % HERO_SLIDES.length), 4800)
+    return () => clearInterval(id)
+  }, [paused])
+
+  const prev = () => setCurrent((c) => (c - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
+  const next = () => setCurrent((c) => (c + 1) % HERO_SLIDES.length)
+
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #052e16 0%, #064e3b 35%, #065f46 65%, #14532d 100%)' }}
+      className="relative overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
-      {/* Grid pattern */}
-      <div className="absolute inset-0 opacity-[0.07]">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
-              <path d="M 64 0 L 0 0 0 64" fill="none" stroke="white" strokeWidth="0.8" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
+      {/* Slide track */}
+      <div
+        style={{
+          display: 'flex',
+          transform: `translateX(${-current * 100}vw)`,
+          transition: 'transform 0.75s cubic-bezier(0.4, 0, 0.2, 1)',
+        }}
+      >
+        {HERO_SLIDES.map((s) => (
+          <div
+            key={s.id}
+            style={{
+              width: '100vw',
+              minHeight: '100vh',
+              flexShrink: 0,
+              position: 'relative',
+              backgroundImage: `url(${s.image}), ${s.fallback}`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          >
+            {/* Dark overlay for text readability */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{ background: s.overlay }}
+            />
+
+            {/* Slide content */}
+            <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-40 flex flex-col items-center justify-center text-center min-h-screen">
+              {/* Text */}
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white/80 text-xs font-semibold tracking-widest uppercase mb-5">
+                {s.tag}
+              </span>
+              <p className="text-xs font-semibold tracking-[0.3em] text-white/40 uppercase mb-2">
+                Lafresh Private Limited
+              </p>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-3">
+                {s.title}
+              </h1>
+              <p className="text-lg text-white/55 font-medium italic mb-5">{s.subtitle}</p>
+              <p className="text-white/70 text-base leading-relaxed mb-10 max-w-2xl">{s.statement}</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="#divisions"
+                  className="px-8 py-4 rounded-full bg-emerald-500 text-white font-semibold text-sm hover:bg-emerald-400 transition-all duration-200 hover:shadow-xl hover:shadow-emerald-500/30 hover:-translate-y-0.5"
+                >
+                  Explore Our Produce
+                </a>
+                <a
+                  href="#contact"
+                  className="px-8 py-4 rounded-full border border-white/30 bg-white/10 text-white font-semibold text-sm hover:bg-white/15 hover:border-white/50 transition-all duration-200"
+                >
+                  Partner With Us →
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* Radial light bloom */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 80% 55% at 50% 40%, rgba(104, 7, 14, 0.18) 0%, transparent 70%)',
-        }}
-      />
+      {/* Prev arrow */}
+      <button
+        onClick={prev}
+        className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/20 border border-white/20 text-white flex items-center justify-center hover:bg-black/40 transition-colors backdrop-blur-sm"
+        aria-label="Previous slide"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-5 h-5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
 
-      {/* Ambient glows */}
-      <div className="absolute top-16 right-12 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-24 left-12 w-96 h-96 rounded-full bg-teal-400/10 blur-3xl pointer-events-none" />
+      {/* Next arrow */}
+      <button
+        onClick={next}
+        className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/20 border border-white/20 text-white flex items-center justify-center hover:bg-black/40 transition-colors backdrop-blur-sm"
+        aria-label="Next slide"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-5 h-5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
 
-      {/* Decorative corner plants */}
-      <div className="absolute top-20 left-6 text-8xl select-none pointer-events-none opacity-10 lg:opacity-20">🌿</div>
-      <div className="absolute bottom-20 right-6 text-8xl select-none pointer-events-none opacity-10 lg:opacity-20">🌾</div>
+      {/* Slide counter */}
+      <div className="absolute bottom-24 right-5 sm:right-8 z-20 text-white/40 text-xs font-mono tabular-nums">
+        {String(current + 1).padStart(2, '0')} / {String(HERO_SLIDES.length).padStart(2, '0')}
+      </div>
 
-      {/* Main content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pt-20">
-        {/* Status badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-sm font-medium mb-10">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          Sustainable Agro-Business · Export Ready
-        </div>
+      {/* Dot indicators */}
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5">
+        {HERO_SLIDES.map((s, i) => (
+          <button
+            key={s.id}
+            onClick={() => setCurrent(i)}
+            aria-label={`Go to slide ${i + 1}: ${s.title}`}
+            className="rounded-full transition-all duration-300"
+            style={{
+              backgroundColor: i === current ? 'white' : 'rgba(255,255,255,0.30)',
+              width: i === current ? '28px' : '10px',
+              height: '10px',
+            }}
+          />
+        ))}
+      </div>
 
-        {/* Headline */}
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-6">
-          Lafresh{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-300">
-            Private
-          </span>
-          <br />
-          Limited
-        </h1>
-
-        {/* Tagline */}
-        <p className="text-xl sm:text-2xl text-emerald-100/75 font-light max-w-xl mx-auto mb-4 leading-relaxed">
-          Fresh from the farm –{' '}
-          <span className="text-white font-medium">for home and the world.</span>
-        </p>
-
-        <p className="text-sm text-stone-400 tracking-wide mb-12">
-          Seasonal Crops &nbsp;·&nbsp; Horticulture &nbsp;·&nbsp; Livestock &nbsp;·&nbsp; Domestic & Export
-        </p>
-
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="#divisions"
-            className="px-8 py-4 rounded-full bg-emerald-500 text-white font-semibold text-base hover:bg-emerald-400 transition-all duration-200 hover:shadow-xl hover:shadow-emerald-500/30 hover:-translate-y-0.5 active:translate-y-0"
-          >
-            Explore Our Produce
-          </a>
-          <a
-            href="#contact"
-            className="px-8 py-4 rounded-full border border-white/30 bg-white/8 text-white font-semibold text-base hover:bg-white/15 hover:border-white/50 transition-all duration-200 backdrop-blur-sm"
-          >
-            Partner With Us →
-          </a>
-        </div>
-
-        {/* Scroll cue */}
-        <div className="mt-20 flex flex-col items-center gap-2 text-white/30">
-          <span className="text-[10px] font-semibold tracking-[0.2em] uppercase">Scroll</span>
-          <div className="w-px h-10 bg-gradient-to-b from-white/30 to-transparent" />
-        </div>
+      {/* Progress bar */}
+      <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-20 w-44 h-0.5 bg-white/15 rounded-full overflow-hidden">
+        <div
+          className="h-full bg-emerald-400 rounded-full transition-all duration-700"
+          style={{ width: `${((current + 1) / HERO_SLIDES.length) * 100}%` }}
+        />
       </div>
 
       {/* Bottom wave */}
-      <div className="absolute bottom-0 inset-x-0">
+      <div className="absolute bottom-0 inset-x-0 z-20 pointer-events-none">
         <svg viewBox="0 0 1440 72" preserveAspectRatio="none" className="w-full h-14 fill-stone-50">
           <path d="M0,36 C480,72 960,0 1440,36 L1440,72 L0,72 Z" />
         </svg>
@@ -796,8 +1039,8 @@ function Contact() {
 
             <div className="space-y-3">
               {[
-                { emoji: '📧', label: 'General Inquiries', value: 'contact@lafresh.com' },
-                { emoji: '🌍', label: 'Export Partnerships', value: 'exports@lafresh.com' },
+                { emoji: '📧', label: 'General Inquiries', value: 'info@lafresh.co.zw' },
+                { emoji: '🌍', label: 'Export Partnerships', value: 'info.exports@lafresh.co.zw' },
                 { emoji: '📍', label: 'Headquarters', value: 'Harare, Zimbabwe' },
               ].map((item) => (
                 <div
@@ -981,18 +1224,23 @@ function Footer() {
 // ─── App ──────────────────────────────────────────────────────────────────────
 
 export default function App() {
+  const [loading, setLoading] = useState(true)
+
   return (
-    <div className="min-h-screen font-sans">
-      <Navbar />
-      <Hero />
-      <About />
-      <CoreDivisions />
-      <MarketFocus />
-      <SeasonalCalendar />
-      <Sustainability />
-      <Testimonials />
-      <Contact />
-      <Footer />
-    </div>
+    <>
+      {loading && <Preloader onDone={() => setLoading(false)} />}
+      <div className="min-h-screen font-sans">
+        <Navbar />
+        <Hero />
+        <About />
+        <CoreDivisions />
+        <MarketFocus />
+        <SeasonalCalendar />
+        <Sustainability />
+        <Testimonials />
+        <Contact />
+        <Footer />
+      </div>
+    </>
   )
 }
