@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import lafreshLogo from './assets/lafresh-logo.png'
 import './App.css'
 
 // ─── Static data ──────────────────────────────────────────────────────────────
@@ -31,7 +32,7 @@ const DIVISIONS = [
     description:
       'Using precision farming and greenhouse techniques, we grow export-grade fruits, exotic vegetables, and cut flowers that meet international phytosanitary standards.',
     examples: ['Mangoes', 'Chilies', 'Avocados', 'Cut Flowers', 'Exotic Herbs'],
-    accent: 'emerald' as const,
+    accent: 'olive' as const,
   },
   {
     id: 'livestock',
@@ -64,11 +65,11 @@ const SEASONS = [
     months: 'June – September',
     crops: ['Rice', 'Beans'],
     horticulture: 'Chilies',
-    bg: 'bg-gradient-to-br from-teal-50 to-cyan-100',
-    border: 'border-teal-200',
-    badge: 'bg-teal-100 text-teal-900 border border-teal-200',
-    heading: 'text-teal-800',
-    dot: 'bg-teal-400',
+    bg: 'bg-gradient-to-br from-olive-50 to-cream-100',
+    border: 'border-olive-200',
+    badge: 'bg-olive-100 text-forest-800 border border-olive-200',
+    heading: 'text-forest-700',
+    dot: 'bg-olive-400',
   },
   {
     name: 'Winter',
@@ -115,7 +116,7 @@ const TESTIMONIALS = [
     role: 'Head Buyer, Harare Grand Hotels & Suites',
     tag: 'Domestic Partner',
     initials: 'TM',
-    color: 'emerald' as const,
+    color: 'forest' as const,
   },
   {
     quote:
@@ -124,7 +125,7 @@ const TESTIMONIALS = [
     role: 'Director, AfroCrop International Exports',
     tag: 'Export Partner',
     initials: 'KM',
-    color: 'amber' as const,
+    color: 'olive' as const,
   },
 ]
 
@@ -144,37 +145,20 @@ function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-sm shadow-sm border-b border-stone-100'
+          ? 'bg-white/96 backdrop-blur-sm shadow-sm border-b border-cream-200'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5">
-            <div
-              className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                scrolled ? 'bg-emerald-700' : 'bg-white/15 border border-white/30'
-              }`}
-            >
-              <span className="text-lg">🌿</span>
-            </div>
-            <div className="leading-none">
-              <span
-                className={`font-bold text-base tracking-tight block transition-colors duration-300 ${
-                  scrolled ? 'text-stone-900' : 'text-white'
-                }`}
-              >
-                Lafresh
-              </span>
-              <span
-                className={`text-[11px] font-medium transition-colors duration-300 ${
-                  scrolled ? 'text-emerald-700' : 'text-emerald-300'
-                }`}
-              >
-                Private Limited
-              </span>
-            </div>
+          {/* Logo image */}
+          <a href="#" className="flex items-center">
+            <img
+              src={lafreshLogo}
+              alt="Lafresh Farms"
+              className="h-12 w-auto object-contain"
+              style={!scrolled ? { filter: 'brightness(0) invert(1)' } : undefined}
+            />
           </a>
 
           {/* Desktop nav */}
@@ -185,7 +169,7 @@ function Navbar() {
                 href={l.href}
                 className={`text-sm font-medium transition-colors duration-200 ${
                   scrolled
-                    ? 'text-stone-600 hover:text-emerald-700'
+                    ? 'text-stone-600 hover:text-forest-700'
                     : 'text-white/80 hover:text-white'
                 }`}
               >
@@ -199,8 +183,8 @@ function Navbar() {
             href="#contact"
             className={`hidden lg:inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
               scrolled
-                ? 'bg-emerald-700 text-white hover:bg-emerald-800 shadow-sm'
-                : 'bg-white text-emerald-800 hover:bg-emerald-50'
+                ? 'bg-forest-700 text-white hover:bg-forest-800 shadow-sm'
+                : 'bg-white text-forest-800 hover:bg-olive-50'
             }`}
           >
             Partner With Us
@@ -209,7 +193,7 @@ function Navbar() {
           {/* Mobile hamburger */}
           <button
             className={`lg:hidden p-2 rounded-lg transition-colors ${
-              scrolled ? 'text-stone-700 hover:bg-stone-100' : 'text-white hover:bg-white/10'
+              scrolled ? 'text-stone-700 hover:bg-cream-100' : 'text-white hover:bg-white/10'
             }`}
             onClick={() => setOpen((o) => !o)}
             aria-label="Toggle navigation menu"
@@ -227,23 +211,23 @@ function Navbar() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="lg:hidden bg-white border-t border-stone-100 shadow-lg">
+        <div className="lg:hidden bg-white border-t border-cream-200 shadow-lg">
           <div className="px-4 py-4 space-y-1">
             {NAV_LINKS.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block px-3 py-2.5 rounded-xl text-stone-700 hover:text-emerald-700 hover:bg-emerald-50 text-sm font-medium transition-colors"
+                className="block px-3 py-2.5 rounded-xl text-stone-700 hover:text-forest-700 hover:bg-olive-50 text-sm font-medium transition-colors"
               >
                 {l.label}
               </a>
             ))}
-            <div className="pt-3 mt-3 border-t border-stone-100">
+            <div className="pt-3 mt-3 border-t border-cream-200">
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="block w-full text-center px-5 py-3 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 transition-colors"
+                className="block w-full text-center px-5 py-3 rounded-full bg-forest-700 text-white text-sm font-semibold hover:bg-forest-800 transition-colors"
               >
                 Partner With Us
               </a>
@@ -261,7 +245,7 @@ function Hero() {
   return (
     <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #052e16 0%, #064e3b 35%, #065f46 65%, #14532d 100%)' }}
+      style={{ background: 'linear-gradient(135deg, #0D1F05 0%, #1E3E0D 35%, #2C5810 65%, #152B08 100%)' }}
     >
       {/* Grid pattern */}
       <div className="absolute inset-0 opacity-[0.07]">
@@ -280,30 +264,30 @@ function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 55% at 50% 40%, rgba(16,185,129,0.18) 0%, transparent 70%)',
+            'radial-gradient(ellipse 80% 55% at 50% 40%, rgba(123,156,32,0.2) 0%, transparent 70%)',
         }}
       />
 
       {/* Ambient glows */}
-      <div className="absolute top-16 right-12 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-24 left-12 w-96 h-96 rounded-full bg-teal-400/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-16 right-12 w-80 h-80 rounded-full bg-forest-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-24 left-12 w-96 h-96 rounded-full bg-olive-500/10 blur-3xl pointer-events-none" />
 
-      {/* Decorative corner plants */}
+      {/* Decorative corners */}
       <div className="absolute top-20 left-6 text-8xl select-none pointer-events-none opacity-10 lg:opacity-20">🌿</div>
       <div className="absolute bottom-20 right-6 text-8xl select-none pointer-events-none opacity-10 lg:opacity-20">🌾</div>
 
       {/* Main content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pt-20">
         {/* Status badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-sm font-medium mb-10">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-forest-500/20 border border-olive-400/30 text-olive-300 text-sm font-medium mb-10">
+          <span className="w-2 h-2 rounded-full bg-olive-400 animate-pulse" />
           Sustainable Agro-Business · Export Ready
         </div>
 
         {/* Headline */}
         <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-6">
           Lafresh{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-300">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-olive-300 to-olive-400">
             Private
           </span>
           <br />
@@ -311,7 +295,7 @@ function Hero() {
         </h1>
 
         {/* Tagline */}
-        <p className="text-xl sm:text-2xl text-emerald-100/75 font-light max-w-xl mx-auto mb-4 leading-relaxed">
+        <p className="text-xl sm:text-2xl text-olive-100/80 font-light max-w-xl mx-auto mb-4 leading-relaxed">
           Fresh from the farm –{' '}
           <span className="text-white font-medium">for home and the world.</span>
         </p>
@@ -324,7 +308,7 @@ function Hero() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#divisions"
-            className="px-8 py-4 rounded-full bg-emerald-500 text-white font-semibold text-base hover:bg-emerald-400 transition-all duration-200 hover:shadow-xl hover:shadow-emerald-500/30 hover:-translate-y-0.5 active:translate-y-0"
+            className="px-8 py-4 rounded-full bg-forest-600 text-white font-semibold text-base hover:bg-forest-500 transition-all duration-200 hover:shadow-xl hover:shadow-forest-600/30 hover:-translate-y-0.5 active:translate-y-0"
           >
             Explore Our Produce
           </a>
@@ -345,7 +329,7 @@ function Hero() {
 
       {/* Bottom wave */}
       <div className="absolute bottom-0 inset-x-0">
-        <svg viewBox="0 0 1440 72" preserveAspectRatio="none" className="w-full h-14 fill-stone-50">
+        <svg viewBox="0 0 1440 72" preserveAspectRatio="none" className="w-full h-14 fill-cream-50">
           <path d="M0,36 C480,72 960,0 1440,36 L1440,72 L0,72 Z" />
         </svg>
       </div>
@@ -364,17 +348,17 @@ function About() {
   ]
 
   return (
-    <section id="about" className="py-24 bg-stone-50">
+    <section id="about" className="py-24 bg-cream-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left — text */}
           <div>
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold tracking-widest uppercase mb-6">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-olive-100 text-forest-800 text-xs font-semibold tracking-widest uppercase mb-6">
               🌱 About Lafresh
             </span>
             <h2 className="text-4xl sm:text-5xl font-bold text-stone-900 leading-tight mb-6">
               Rooted in the land,{' '}
-              <span className="text-emerald-700">growing for the world</span>
+              <span className="text-forest-700">growing for the world</span>
             </h2>
             <p className="text-stone-600 text-lg leading-relaxed mb-5">
               Lafresh Private Limited is an agro-based company committed to sustainable farming practices,
@@ -388,13 +372,13 @@ function About() {
             <div className="flex flex-wrap gap-3">
               <a
                 href="#divisions"
-                className="px-6 py-3 rounded-full bg-emerald-700 text-white font-semibold text-sm hover:bg-emerald-800 transition-colors"
+                className="px-6 py-3 rounded-full bg-forest-700 text-white font-semibold text-sm hover:bg-forest-800 transition-colors"
               >
                 Our Divisions
               </a>
               <a
                 href="#contact"
-                className="px-6 py-3 rounded-full border border-stone-300 text-stone-700 font-semibold text-sm hover:border-emerald-600 hover:text-emerald-700 transition-colors"
+                className="px-6 py-3 rounded-full border border-stone-300 text-stone-700 font-semibold text-sm hover:border-forest-600 hover:text-forest-700 transition-colors"
               >
                 Get in Touch
               </a>
@@ -406,11 +390,11 @@ function About() {
             {/* Hero visual card */}
             <div
               className="relative rounded-3xl overflow-hidden h-52"
-              style={{ background: 'linear-gradient(135deg, #065f46 0%, #047857 55%, #10b981 100%)' }}
+              style={{ background: 'linear-gradient(135deg, #2C5810 0%, #376C14 55%, #7B9C20 100%)' }}
             >
               <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
                 <div className="text-6xl mb-2">🌾</div>
-                <p className="text-emerald-200 font-medium text-sm">Sustainably grown · Responsibly traded</p>
+                <p className="text-olive-100 font-medium text-sm">Sustainably grown · Responsibly traded</p>
               </div>
               <div className="absolute top-4 right-5 text-5xl opacity-15 select-none">🌿</div>
               <div className="absolute bottom-4 left-5 text-4xl opacity-15 select-none">🌱</div>
@@ -421,9 +405,9 @@ function About() {
               {stats.map((s) => (
                 <div
                   key={s.label}
-                  className="bg-white rounded-2xl p-6 border border-stone-100 shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-white rounded-2xl p-6 border border-cream-200 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="text-3xl font-bold text-emerald-700 mb-1">{s.value}</div>
+                  <div className="text-3xl font-bold text-forest-700 mb-1">{s.value}</div>
                   <div className="text-sm text-stone-500 font-medium">{s.label}</div>
                 </div>
               ))}
@@ -445,12 +429,12 @@ const DIVISION_STYLES = {
     tag: 'bg-amber-500 text-white',
     ring: 'hover:ring-amber-200',
   },
-  emerald: {
-    bg: 'bg-emerald-50',
-    border: 'border-emerald-200',
-    badge: 'bg-emerald-100 text-emerald-800',
-    tag: 'bg-emerald-600 text-white',
-    ring: 'hover:ring-emerald-200',
+  olive: {
+    bg: 'bg-olive-50',
+    border: 'border-olive-200',
+    badge: 'bg-olive-100 text-forest-700',
+    tag: 'bg-forest-600 text-white',
+    ring: 'hover:ring-olive-200',
   },
   stone: {
     bg: 'bg-stone-50',
@@ -466,7 +450,7 @@ function CoreDivisions() {
     <section id="divisions" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold tracking-widest uppercase mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-olive-100 text-forest-800 text-xs font-semibold tracking-widest uppercase mb-4">
             What We Grow & Raise
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-stone-900 mb-4">Our Core Divisions</h2>
@@ -520,10 +504,10 @@ function CoreDivisions() {
 
 function MarketFocus() {
   return (
-    <section id="markets" className="py-24 bg-stone-50">
+    <section id="markets" className="py-24 bg-cream-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold tracking-widest uppercase mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-olive-100 text-forest-800 text-xs font-semibold tracking-widest uppercase mb-4">
             Where We Serve
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-stone-900 mb-4">Domestic & Export Focus</h2>
@@ -535,12 +519,12 @@ function MarketFocus() {
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Domestic */}
-          <div className="bg-white rounded-3xl p-10 border border-stone-100 shadow-sm hover:shadow-lg transition-shadow">
-            <div className="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center text-3xl mb-6">
+          <div className="bg-white rounded-3xl p-10 border border-cream-200 shadow-sm hover:shadow-lg transition-shadow">
+            <div className="w-16 h-16 rounded-2xl bg-olive-100 flex items-center justify-center text-3xl mb-6">
               🏪
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-olive-100 text-forest-700 text-xs font-semibold mb-5">
+              <span className="w-1.5 h-1.5 rounded-full bg-forest-500" />
               Local Market
             </div>
             <h3 className="text-2xl font-bold text-stone-900 mb-3">Serving Local Communities</h3>
@@ -556,7 +540,7 @@ function MarketFocus() {
                 'Food processors & distributors',
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3 text-sm text-stone-600">
-                  <span className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 flex-shrink-0 text-[10px] font-bold">
+                  <span className="w-5 h-5 rounded-full bg-olive-100 flex items-center justify-center text-forest-700 flex-shrink-0 text-[10px] font-bold">
                     ✓
                   </span>
                   {item}
@@ -567,18 +551,18 @@ function MarketFocus() {
 
           {/* Export */}
           <div
-            className="rounded-3xl p-10 text-white hover:shadow-xl hover:shadow-emerald-900/20 transition-shadow"
-            style={{ background: 'linear-gradient(135deg, #065f46 0%, #047857 50%, #064e3b 100%)' }}
+            className="rounded-3xl p-10 text-white hover:shadow-xl transition-shadow"
+            style={{ background: 'linear-gradient(135deg, #2C5810 0%, #376C14 50%, #1E3E0D 100%)' }}
           >
             <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center text-3xl mb-6 border border-white/10">
               ✈️
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-emerald-200 text-xs font-semibold mb-5 border border-white/15">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-300" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-olive-200 text-xs font-semibold mb-5 border border-white/15">
+              <span className="w-1.5 h-1.5 rounded-full bg-olive-300" />
               International Export
             </div>
             <h3 className="text-2xl font-bold text-white mb-3">Export-Ready & Certified</h3>
-            <p className="text-emerald-100/75 leading-relaxed mb-7">
+            <p className="text-olive-100/75 leading-relaxed mb-7">
               Our products meet international phytosanitary standards, enabling reliable exports to buyers
               across Europe, Asia, and the Middle East — with full traceability and documentation.
             </p>
@@ -589,8 +573,8 @@ function MarketFocus() {
                 'Custom export packaging',
                 'Direct long-term buyer contracts',
               ].map((item) => (
-                <li key={item} className="flex items-center gap-3 text-sm text-emerald-100">
-                  <span className="w-5 h-5 rounded-full bg-emerald-600/50 flex items-center justify-center text-emerald-200 flex-shrink-0 text-[10px] font-bold">
+                <li key={item} className="flex items-center gap-3 text-sm text-olive-100">
+                  <span className="w-5 h-5 rounded-full bg-forest-500/50 flex items-center justify-center text-olive-200 flex-shrink-0 text-[10px] font-bold">
                     ✓
                   </span>
                   {item}
@@ -611,7 +595,7 @@ function SeasonalCalendar() {
     <section id="seasons" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold tracking-widest uppercase mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-olive-100 text-forest-800 text-xs font-semibold tracking-widest uppercase mb-4">
             🗓 Seasonal Availability
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-stone-900 mb-4">What's in Season</h2>
@@ -672,15 +656,15 @@ function Sustainability() {
     <section
       id="sustainability"
       className="py-24"
-      style={{ background: 'linear-gradient(160deg, #052e16 0%, #064e3b 50%, #065f46 100%)' }}
+      style={{ background: 'linear-gradient(160deg, #0D1F05 0%, #1E3E0D 50%, #2C5810 100%)' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-800/60 text-emerald-300 text-xs font-semibold tracking-widest uppercase mb-4 border border-emerald-700/40">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-forest-800/60 text-olive-300 text-xs font-semibold tracking-widest uppercase mb-4 border border-forest-700/40">
             Our Commitment
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Sustainability at Our Core</h2>
-          <p className="text-emerald-200/60 text-lg max-w-2xl mx-auto">
+          <p className="text-olive-100/60 text-lg max-w-2xl mx-auto">
             We believe good farming is responsible farming. Every decision considers the long-term health of
             the land, the people, and the planet.
           </p>
@@ -690,13 +674,13 @@ function Sustainability() {
           {PILLARS.map((p) => (
             <div
               key={p.title}
-              className="bg-emerald-900/40 rounded-3xl p-8 border border-emerald-800/50 hover:bg-emerald-800/50 hover:border-emerald-600/60 hover:-translate-y-1 transition-all duration-300 group"
+              className="bg-forest-900/40 rounded-3xl p-8 border border-forest-800/50 hover:bg-forest-800/50 hover:border-forest-600/60 hover:-translate-y-1 transition-all duration-300 group"
             >
-              <div className="w-14 h-14 rounded-2xl bg-emerald-800/60 flex items-center justify-center text-3xl mb-6 group-hover:bg-emerald-700/60 transition-colors">
+              <div className="w-14 h-14 rounded-2xl bg-forest-800/60 flex items-center justify-center text-3xl mb-6 group-hover:bg-forest-700/60 transition-colors">
                 {p.emoji}
               </div>
               <h3 className="text-lg font-bold text-white mb-3">{p.title}</h3>
-              <p className="text-emerald-200/55 text-sm leading-relaxed">{p.body}</p>
+              <p className="text-olive-100/55 text-sm leading-relaxed">{p.body}</p>
             </div>
           ))}
         </div>
@@ -709,32 +693,30 @@ function Sustainability() {
 
 function Testimonials() {
   return (
-    <section className="py-24 bg-stone-50">
+    <section className="py-24 bg-cream-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold tracking-widest uppercase mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-olive-100 text-forest-800 text-xs font-semibold tracking-widest uppercase mb-4">
             What Partners Say
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-stone-900 mb-4">
             Trusted by Buyers & Exporters
           </h2>
-          <p className="text-stone-500 text-lg max-w-xl mx-auto">
-            Real partnerships, proven quality.
-          </p>
+          <p className="text-stone-500 text-lg max-w-xl mx-auto">Real partnerships, proven quality.</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {TESTIMONIALS.map((t) => (
             <div
               key={t.name}
-              className="bg-white rounded-3xl p-10 border border-stone-100 shadow-sm hover:shadow-lg transition-shadow"
+              className="bg-white rounded-3xl p-10 border border-cream-200 shadow-sm hover:shadow-lg transition-shadow"
             >
-              <div className="text-6xl text-emerald-200 font-serif leading-none mb-4 select-none">"</div>
+              <div className="text-6xl text-olive-200 font-serif leading-none mb-4 select-none">"</div>
               <p className="text-stone-700 text-base leading-relaxed mb-8 italic">{t.quote}</p>
               <div className="flex items-center gap-4">
                 <div
                   className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-sm flex-shrink-0 ${
-                    t.color === 'emerald' ? 'bg-emerald-700' : 'bg-amber-700'
+                    t.color === 'forest' ? 'bg-forest-700' : 'bg-olive-600'
                   }`}
                 >
                   {t.initials}
@@ -745,9 +727,9 @@ function Testimonials() {
                 </div>
                 <span
                   className={`px-3 py-1 rounded-full text-xs font-semibold flex-shrink-0 ${
-                    t.color === 'emerald'
-                      ? 'bg-emerald-100 text-emerald-700'
-                      : 'bg-amber-100 text-amber-700'
+                    t.color === 'forest'
+                      ? 'bg-olive-100 text-forest-700'
+                      : 'bg-olive-100 text-olive-700'
                   }`}
                 >
                   {t.tag}
@@ -773,7 +755,7 @@ function Contact() {
   }
 
   const inputClass =
-    'w-full px-4 py-3 rounded-xl border border-stone-200 bg-white text-stone-800 text-sm placeholder:text-stone-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-shadow'
+    'w-full px-4 py-3 rounded-xl border border-cream-200 bg-white text-stone-800 text-sm placeholder:text-stone-300 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition-shadow'
 
   return (
     <section id="contact" className="py-24 bg-white">
@@ -781,7 +763,7 @@ function Contact() {
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left — info */}
           <div>
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold tracking-widest uppercase mb-6">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-olive-100 text-forest-800 text-xs font-semibold tracking-widest uppercase mb-6">
               Get In Touch
             </span>
             <h2 className="text-4xl sm:text-5xl font-bold text-stone-900 mb-6 leading-tight">
@@ -802,9 +784,9 @@ function Contact() {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-stone-50 border border-stone-100"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-cream-50 border border-cream-100"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-xl flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-olive-100 flex items-center justify-center text-xl flex-shrink-0">
                     {item.emoji}
                   </div>
                   <div>
@@ -817,7 +799,7 @@ function Contact() {
           </div>
 
           {/* Right — form */}
-          <div className="bg-stone-50 rounded-3xl p-8 border border-stone-100">
+          <div className="bg-cream-50 rounded-3xl p-8 border border-cream-100">
             {submitted ? (
               <div className="py-12 flex flex-col items-center justify-center text-center">
                 <div className="text-6xl mb-4">✅</div>
@@ -827,7 +809,7 @@ function Contact() {
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="mt-6 px-6 py-2.5 rounded-full border border-stone-300 text-stone-600 text-sm font-medium hover:border-emerald-600 hover:text-emerald-700 transition-colors"
+                  className="mt-6 px-6 py-2.5 rounded-full border border-cream-300 text-stone-600 text-sm font-medium hover:border-forest-600 hover:text-forest-700 transition-colors"
                 >
                   Send another message
                 </button>
@@ -888,7 +870,7 @@ function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-xl bg-emerald-700 text-white font-semibold text-sm hover:bg-emerald-800 transition-colors hover:shadow-lg hover:shadow-emerald-700/20"
+                  className="w-full py-3.5 rounded-xl bg-forest-700 text-white font-semibold text-sm hover:bg-forest-800 transition-colors hover:shadow-lg hover:shadow-forest-700/20"
                 >
                   Send Message →
                 </button>
@@ -912,20 +894,19 @@ function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-full bg-emerald-700 flex items-center justify-center text-lg">
-                🌿
-              </div>
-              <div className="leading-none">
-                <span className="font-bold text-white block">Lafresh</span>
-                <span className="text-xs text-emerald-400">Private Limited</span>
-              </div>
+            <div className="mb-5">
+              <img
+                src={lafreshLogo}
+                alt="Lafresh Farms"
+                className="h-12 w-auto object-contain"
+                style={{ filter: 'brightness(0) invert(1)' }}
+              />
             </div>
             <p className="text-stone-400 text-sm leading-relaxed mb-4 max-w-xs">
               Sustainable agro-farming for local markets and global export. Fresh from the farm — for home
               and the world.
             </p>
-            <p className="text-emerald-400 text-sm font-medium">contact@lafresh.com</p>
+            <p className="text-olive-400 text-sm font-medium">contact@lafresh.com</p>
           </div>
 
           {/* Quick Links */}
@@ -936,7 +917,7 @@ function Footer() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="text-stone-400 text-sm hover:text-emerald-400 transition-colors"
+                    className="text-stone-400 text-sm hover:text-olive-400 transition-colors"
                   >
                     {l.label}
                   </a>
