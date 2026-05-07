@@ -600,9 +600,9 @@ function Hero() {
 function About() {
   const stats = [
     { value: '10+', label: 'Years of farming' },
-    { value: '500+', label: 'Acres cultivated' },
-    { value: '20+', label: 'Export destinations' },
-    { value: '1,000+', label: 'Local partners' },
+    { value: '200+', label: 'Acres cultivated' },
+    { value: '10+', label: 'Export destinations' },
+    { value: '400+', label: 'Local partners' },
   ]
 
   return (
@@ -616,7 +616,7 @@ function About() {
             </span>
             <h2 className="text-4xl sm:text-5xl font-bold text-stone-900 leading-tight mb-6">
               Rooted in the land,{' '}
-              <span className="text-emerald-700">growing for the world</span>
+              <span className="text-[#32CD32]">growing for the world</span>
             </h2>
             <p className="text-stone-600 text-lg leading-relaxed mb-5">
               Lafresh Private Limited is an agro-based company committed to sustainable farming practices,
@@ -630,7 +630,7 @@ function About() {
             <div className="flex flex-wrap gap-3">
               <a
                 href="#divisions"
-                className="px-6 py-3 rounded-full bg-emerald-700 text-white font-semibold text-sm hover:bg-emerald-800 transition-colors"
+                className="px-6 py-3 rounded-full bg-[#32CD32] text-white font-semibold text-sm hover:bg-[#2DBD2D] transition-colors"
               >
                 Our Divisions
               </a>
@@ -665,7 +665,7 @@ function About() {
                   key={s.label}
                   className="bg-white rounded-2xl p-6 border border-stone-100 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="text-3xl font-bold text-emerald-700 mb-1">{s.value}</div>
+                  <div className="text-3xl font-bold text-[#32CD32] mb-1">{s.value}</div>
                   <div className="text-sm text-stone-500 font-medium">{s.label}</div>
                 </div>
               ))}
