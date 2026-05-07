@@ -1,0 +1,51 @@
+/* ── Shimmer sweep ── */
+@keyframes shimmer-sweep {
+  0%   { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(350%)  skewX(-20deg); }
+}
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  transform: translateX(-150%) skewX(-20deg);
+  animation: shimmer-sweep 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Magnetic pulse (breathing) ── */
+@keyframes magnetic-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(50, 205, 50, 0.35);
+  }
+  50% {
+    transform: scale(1.045);
+    box-shadow: 0 0 0 8px rgba(50, 205, 50, 0);
+  }
+}
+.btn-pulse {
+  animation: magnetic-pulse 2.6s ease-in-out infinite;
+}
+
+/* ── Attention flash (every ~4 s) ── */
+@keyframes attention-flash {
+  0%,  75%, 100% { box-shadow: none; }
+  80%            { box-shadow: 0 0 22px 6px rgba(50, 205, 50, 0.75); }
+  85%            { box-shadow: none; }
+  90%            { box-shadow: 0 0 16px 4px rgba(50, 205, 50, 0.5); }
+  95%            { box-shadow: none; }
+}
+.btn-flash {
+  animation: attention-flash 4s ease-in-out infinite;
+}

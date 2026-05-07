@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import './App.css'
 import lafreshLogo from './assets/lafresh-logo.png'
 
@@ -23,6 +24,7 @@ const DIVISIONS = [
       'We cultivate high-yield seasonal crops aligned with market demand and growing conditions, ensuring year-round supply to homes, retailers, and processors.',
     examples: ['Maize', 'Rice', 'Beans', 'Tomatoes', 'Groundnuts'],
     accent: 'amber' as const,
+    catalogLabel: 'Seasonal Catalogy',
   },
   {
     id: 'horticulture',
@@ -33,6 +35,7 @@ const DIVISIONS = [
       'Using precision farming and greenhouse techniques, we grow export-grade fruits, exotic vegetables, and cut flowers that meet international phytosanitary standards.',
     examples: ['Mangoes', 'Chilies', 'Avocados', 'Cut Flowers', 'Exotic Herbs'],
     accent: 'emerald' as const,
+    catalogLabel: 'Horticulture Catalogy',
   },
   {
     id: 'livestock',
@@ -43,6 +46,7 @@ const DIVISIONS = [
       'Our livestock operations follow humane and ethical standards — open grazing, natural feed, and zero growth hormones — delivering premium meat, dairy, and poultry.',
     examples: ['Free-range Poultry', 'Goat Farming', 'Dairy Cattle', 'Organic Eggs'],
     accent: 'stone' as const,
+    catalogLabel: 'Livestock Catalogy',
   },
 ]
 
@@ -129,24 +133,127 @@ const TESTIMONIALS = [
   },
 ]
 
-const HERO_SLIDES = [
+const SEASONAL_PRODUCTS = [
   {
-    id: 'maize',
-    tag: '🥕 Seasonal Harvest',
-    title: 'Farm Fresh Vegetables',
-    subtitle: 'Straight from the soil to your table',
-    statement:
-      'A rich harvest of seasonal vegetables — tomatoes, cucumbers, beetroot, red peppers, squash and more — hand-picked at peak ripeness and delivered fresh to homes, markets, and restaurants.',
-    image: '/slides/maize.jpg',
-    fallback: 'linear-gradient(135deg, #6b3a0c 0%, #92400e 35%, #b45309 65%, #78350f 100%)',
-    overlay: 'rgba(8, 18, 5, 0.50)',
-    primary: '🥦',
-    decor: ['🍅', '🥒', '🌶️'],
-    halo: '#fbbf24',
+    name: "Beans",
+    image: "/slides/Beans.png",
+    harvestDate: "May 4, 2026",
+    description: "Fresh, protein-rich beans harvested at peak ripeness",
+    availability: "In Stock",
+    price: "$1.50",
+    unit: "kg"
   },
   {
+    name: "Rice",
+    image: "/slides/rice.png",
+    harvestDate: "May 4, 2026",
+    description: "Premium long-grain rice, sustainably grown",
+    availability: "Limited Stock",
+    price: "$2.00",
+    unit: "kg"
+  },
+  {
+    name: "Tomatoes",
+    image: "/slides/tomatos.png",
+    harvestDate: "May 4, 2026",
+    description: "Vine-ripened, sweet and juicy tomatoes",
+    availability: "In Stock",
+    price: "$2.50",
+    unit: "kg"
+  },
+  {
+    name: "Groundnuts",
+    image: "/slides/groundnuts.png",
+    harvestDate: "May 4, 2026",
+    description: "Nutritious groundnuts, perfect for snacking",
+    availability: "Pre-order",
+    price: "$3.00",
+    unit: "kg"
+  }
+]
+
+const HORTICULTURE_PRODUCTS = [
+  {
+    name: "Mangoes",
+    image: "/slides/mango.png",
+    harvestDate: "May 4, 2026",
+    description: "Sweet, sun-ripened mangoes ready for export",
+    availability: "In Stock",
+    price: "$2.00",
+    unit: "kg"
+  },
+  {
+    name: "Chillis",
+    image: "/slides/chillis.png",
+    harvestDate: "May 4, 2026",
+    description: "Hot and flavourful chillis, freshly picked",
+    availability: "In Stock",
+    price: "$1.80",
+    unit: "kg"
+  },
+  {
+    name: "Roses",
+    image: "/slides/roses.png",
+    harvestDate: "May 4, 2026",
+    description: "Premium cut roses, export-grade quality",
+    availability: "Limited Stock",
+    price: "$5.00",
+    unit: "bunch"
+  },
+  {
+    name: "Herbs",
+    image: "/slides/herbs.png",
+    harvestDate: "May 4, 2026",
+    description: "Fresh exotic herbs, certified to meet international standards",
+    availability: "In Stock",
+    price: "$1.20",
+    unit: "kg"
+  }
+]
+
+const LIVESTOCK_PRODUCTS = [
+  {
+    name: "Chickens",
+    image: "/slides/chickens.png",
+    harvestDate: "May 4, 2026",
+    description: "Free-range chickens, naturally raised with no growth hormones",
+    availability: "In Stock",
+    price: "$5.00",
+    unit: "bird"
+  },
+  {
+    name: "Mbudzi",
+    image: "/slides/mbudzi.png",
+    harvestDate: "May 4, 2026",
+    description: "Healthy goats raised on open pastures, supplying premium chevon",
+    availability: "In Stock",
+    price: "$80.00",
+    unit: "head"
+  },
+  {
+    name: "Eggs",
+    image: "/slides/eggs.png",
+    harvestDate: "May 4, 2026",
+    description: "Fresh organic eggs from free-range hens",
+    availability: "In Stock",
+    price: "$2.50",
+    unit: "dozen"
+  },
+  {
+    name: "Dairy Products",
+    image: "/slides/dairy products.png",
+    harvestDate: "May 4, 2026",
+    description: "Fresh milk and dairy from ethically raised dairy cattle",
+    availability: "Limited Stock",
+    price: "$1.00",
+    unit: "litre"
+  }
+]
+
+const HERO_SLIDES = [
+  {
     id: 'cattle',
-    tag: '🐄 Livestock',
+    tag: 'Livestock',
     title: 'Premium Beef Cattle',
     subtitle: 'Purebred strength, superior quality',
     statement:
@@ -630,7 +737,7 @@ function About() {
             <div className="flex flex-wrap gap-3">
               <a
                 href="#divisions"
-                className="px-6 py-3 rounded-full bg-[#32CD32] text-white font-semibold text-sm hover:bg-[#2DBD2D] transition-colors"
+                className="btn-flash px-6 py-3 rounded-full bg-[#32CD32] text-white font-semibold text-sm hover:bg-[#2DBD2D] transition-colors"
               >
                 Our Divisions
               </a>
@@ -703,9 +810,97 @@ const DIVISION_STYLES = {
   },
 }
 
+type Product = {
+  name: string; image: string; harvestDate: string
+  description: string; availability: string; price: string; unit: string
+}
+
+const AVAILABILITY_STYLES: Record<string, string> = {
+  'In Stock':      'bg-green-100 text-green-800',
+  'Limited Stock': 'bg-yellow-100 text-yellow-800',
+  'Sold Out':      'bg-red-100 text-red-800',
+  'Pre-order':     'bg-blue-100 text-blue-800',
+}
+
+function CatalogModal({ title, subtitle, products, onClose }: {
+  title: string; subtitle: string; products: Product[]; onClose: () => void
+}) {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = '' }
+  }, [])
+
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+      style={{ background: 'rgba(0,0,0,0.65)' }}
+      onClick={onClose}
+    >
+      <div
+        className="bg-white rounded-3xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="sticky top-0 bg-white rounded-t-3xl px-8 pt-8 pb-4 border-b border-stone-100 flex items-center justify-between z-10">
+          <div>
+            <h3 className="text-2xl font-bold text-stone-900">{title}</h3>
+            <p className="text-stone-500 text-sm mt-1">{subtitle}</p>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-stone-500 hover:text-stone-800 transition-colors text-lg font-bold"
+          >
+            ✕
+          </button>
+        </div>
+        <div className="p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {products.map((product) => (
+            <div
+              key={product.name}
+              className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-stone-100 overflow-hidden flex flex-col"
+            >
+              <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
+              <div className="p-5 flex flex-col flex-1">
+                <h4 className="text-lg font-bold text-stone-900 mb-1">{product.name}</h4>
+                <p className="text-xs text-stone-500 mb-2">Harvested: {product.harvestDate}</p>
+                <p className="text-stone-500 text-sm mb-3">{product.description}</p>
+                <span className={`self-start px-3 py-1 rounded-full text-xs font-semibold ${AVAILABILITY_STYLES[product.availability] ?? 'bg-gray-100 text-gray-800'}`}>
+                  {product.availability}
+                </span>
+                <div className="flex items-center justify-between mt-auto pt-4">
+                  <span className="text-xl font-bold text-[#32CD32]">{product.price}/{product.unit}</span>
+                  <button
+                    onClick={() => alert(`Added ${product.name} to cart!`)}
+                    className="btn-shimmer px-4 py-2 rounded-full bg-[#32CD32] text-white font-semibold text-sm hover:bg-[#2DBD2D] transition-colors"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>,
+    document.body
+  )
+}
+
 function CoreDivisions() {
-  const handleCatalogClick = (divisionId: string) => {
-    alert(`Product Catalog for ${divisionId} - Coming soon!`)
+  const [selectedCatalog, setSelectedCatalog] = useState<string | null>(null)
+
+  const CATALOGS: Record<string, { title: string; subtitle: string; products: Product[] }> = {
+    crops:        { title: 'Seasonal Crops Catalog',  subtitle: 'Fresh produce from our seasonal crops division',                       products: SEASONAL_PRODUCTS },
+    horticulture: { title: 'Horticulture Catalog',    subtitle: 'Premium fruits, flowers & vegetables from our horticulture division',   products: HORTICULTURE_PRODUCTS },
+    livestock:    { title: 'Livestock Catalog',        subtitle: 'Ethically raised livestock and animal products',                        products: LIVESTOCK_PRODUCTS },
+  }
+
+  const handleCatalogClick = (divisionTitle: string) => {
+    const key = divisionTitle === 'Seasonal Crops' ? 'crops'
+              : divisionTitle === 'Horticulture'   ? 'horticulture'
+              : divisionTitle === 'Livestock'       ? 'livestock'
+              : null
+    if (key) setSelectedCatalog(key)
+    else alert(`Product Catalog for ${divisionTitle} - Coming soon!`)
   }
 
   return (
@@ -721,6 +916,13 @@ function CoreDivisions() {
             table, and farm to world.
           </p>
         </div>
+
+        {selectedCatalog && CATALOGS[selectedCatalog] && (
+          <CatalogModal
+            {...CATALOGS[selectedCatalog]}
+            onClose={() => setSelectedCatalog(null)}
+          />
+        )}
 
         <div className="grid lg:grid-cols-3 gap-8">
           {DIVISIONS.map((div) => {
@@ -754,11 +956,11 @@ function CoreDivisions() {
                   </div>
                 </div>
 
-                <button 
+                <button
                   onClick={() => handleCatalogClick(div.title)}
-                  className={`mt-6 w-full px-6 py-3 rounded-full text-white font-semibold text-sm transition-colors hover:shadow-lg cursor-pointer ${s.tag}`}
+                  className={`btn-pulse mt-6 w-full px-6 py-3 rounded-full text-white font-semibold text-sm transition-colors hover:shadow-lg cursor-pointer ${s.tag}`}
                 >
-                  Product Catalog
+                  {div.catalogLabel || 'Product Catalog'}
                 </button>
               </div>
             )
@@ -1141,7 +1343,7 @@ function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-xl bg-emerald-700 text-white font-semibold text-sm hover:bg-emerald-800 transition-colors hover:shadow-lg hover:shadow-emerald-700/20"
+                  className="btn-shimmer w-full py-3.5 rounded-xl bg-emerald-700 text-white font-semibold text-sm hover:bg-emerald-800 transition-colors hover:shadow-lg hover:shadow-emerald-700/20"
                 >
                   Send Message →
                 </button>
