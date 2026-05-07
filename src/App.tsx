@@ -704,6 +704,10 @@ const DIVISION_STYLES = {
 }
 
 function CoreDivisions() {
+  const handleCatalogClick = (divisionId: string) => {
+    alert(`Product Catalog for ${divisionId} - Coming soon!`)
+  }
+
   return (
     <section id="divisions" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -749,6 +753,13 @@ function CoreDivisions() {
                     ))}
                   </div>
                 </div>
+
+                <button 
+                  onClick={() => handleCatalogClick(div.title)}
+                  className={`mt-6 w-full px-6 py-3 rounded-full text-white font-semibold text-sm transition-colors hover:shadow-lg cursor-pointer ${s.tag}`}
+                >
+                  Product Catalog
+                </button>
               </div>
             )
           })}
