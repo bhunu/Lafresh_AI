@@ -52,23 +52,11 @@ const DIVISIONS = [
 
 const SEASONS = [
   {
-    name: 'Summer',
-    emoji: '☀️',
-    months: 'March – May',
-    crops: ['Maize', 'Groundnuts'],
-    horticulture: 'Mangoes',
-    bg: 'bg-gradient-to-br from-amber-50 to-orange-100',
-    border: 'border-amber-200',
-    badge: 'bg-amber-100 text-amber-900 border border-amber-200',
-    heading: 'text-amber-800',
-    dot: 'bg-amber-400',
-  },
-  {
-    name: 'Monsoon',
+    name: 'Rainy Season',
     emoji: '🌧️',
-    months: 'June – September',
-    crops: ['Rice', 'Beans'],
-    horticulture: 'Chilies',
+    months: 'November – March',
+    crops: ['Maize', 'Groundnuts', 'Sorghum', 'Sunflowers'],
+    horticulture: 'Mangoes & Chilies',
     bg: 'bg-gradient-to-br from-teal-50 to-cyan-100',
     border: 'border-teal-200',
     badge: 'bg-teal-100 text-teal-900 border border-teal-200',
@@ -78,14 +66,26 @@ const SEASONS = [
   {
     name: 'Winter',
     emoji: '❄️',
-    months: 'October – February',
-    crops: ['Tomatoes', 'Wheat'],
-    horticulture: 'Cut Flowers',
+    months: 'May – August',
+    crops: ['Wheat', 'Barley', 'Potatoes', 'Tomatoes'],
+    horticulture: 'Cut Flowers & Herbs',
     bg: 'bg-gradient-to-br from-violet-50 to-indigo-100',
     border: 'border-violet-200',
     badge: 'bg-violet-100 text-violet-900 border border-violet-200',
     heading: 'text-violet-800',
     dot: 'bg-violet-400',
+  },
+  {
+    name: 'Spring (Hot Dry)',
+    emoji: '☀️',
+    months: 'September – October',
+    crops: ['Beans', 'Cowpeas', 'Sorghum'],
+    horticulture: 'Avocados & Citrus',
+    bg: 'bg-gradient-to-br from-amber-50 to-orange-100',
+    border: 'border-amber-200',
+    badge: 'bg-amber-100 text-amber-900 border border-amber-200',
+    heading: 'text-amber-800',
+    dot: 'bg-amber-400',
   },
 ]
 
@@ -324,7 +324,7 @@ function Preloader({ onDone }: { onDone: () => void }) {
     <div
       className="fixed inset-0 z-[9999] flex flex-col items-center justify-center gap-8 select-none"
       style={{
-        background: 'linear-gradient(160deg, #052e16 0%, #064e3b 60%, #065f46 100%)',
+        background: 'linear-gradient(160deg, #32CD32 0%, #064e3b 40%, #32CD32 100%)',
         animation: hiding ? 'preloader-out 0.6s ease-out forwards' : undefined,
       }}
     >
@@ -348,7 +348,7 @@ function Preloader({ onDone }: { onDone: () => void }) {
             marginLeft: '-2.5px',
             width: '5px',
             height: '90px',
-            background: 'linear-gradient(to top, #047857 0%, #10b981 65%, #34d399 100%)',
+            background: 'linear-gradient(to top, #32CD32 0%, #10b981 45%, #32CD32 100%)',
             borderRadius: '3px 3px 2px 2px',
             transformOrigin: 'bottom center',
             animation: 'preloader-stem 1.1s cubic-bezier(0.22, 1, 0.36, 1) both',
@@ -363,7 +363,7 @@ function Preloader({ onDone }: { onDone: () => void }) {
             left: '8px',
             width: '40px',
             height: '24px',
-            background: 'linear-gradient(135deg, #34d399 0%, #059669 100%)',
+            background: 'linear-gradient(135deg, #32CD32 0%, #32CD32 100%)',
             borderRadius: '50% 0 50% 50%',
             transformOrigin: 'right center',
             animation: 'preloader-leaf-l 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s both',
@@ -378,7 +378,7 @@ function Preloader({ onDone }: { onDone: () => void }) {
             right: '8px',
             width: '40px',
             height: '24px',
-            background: 'linear-gradient(225deg, #34d399 0%, #059669 100%)',
+            background: 'linear-gradient(225deg, #32CD32 0%, #32CD32 100%)',
             borderRadius: '0 50% 50% 50%',
             transformOrigin: 'left center',
             animation: 'preloader-leaf-r 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.95s both',
@@ -394,7 +394,7 @@ function Preloader({ onDone }: { onDone: () => void }) {
             marginLeft: '-11px',
             width: '22px',
             height: '28px',
-            background: 'radial-gradient(ellipse at 35% 25%, #a7f3d0 0%, #10b981 55%, #047857 100%)',
+            background: 'radial-gradient(ellipse at 35% 25%, #a7f3d0 0%, #10b981 55%, #32CD32 100%)',
             borderRadius: '50% 50% 50% 0',
             animation: 'preloader-bud 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.25s both',
           }}
@@ -624,7 +624,8 @@ function Hero() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="#divisions"
-                  className="px-8 py-4 rounded-full bg-emerald-500 text-white font-semibold text-sm hover:bg-emerald-400 transition-all duration-200 hover:shadow-xl hover:shadow-emerald-500/30 hover:-translate-y-0.5"
+                  className="px-8 py-4 rounded-full text-white font-semibold text-sm transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5"
+                  style={{ background: '#32CD32' }}
                 >
                   Explore Our Produce
                 </a>
@@ -1023,7 +1024,7 @@ function MarketFocus() {
           {/* Export */}
           <div
             className="rounded-3xl p-10 text-white hover:shadow-xl hover:shadow-emerald-900/20 transition-shadow"
-            style={{ background: 'linear-gradient(135deg, #065f46 0%, #047857 50%, #064e3b 100%)' }}
+            style={{ background: 'linear-gradient(135deg, #32CD32 0%, #047857 50%, #32CD32 100%)' }}
           >
             <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center text-3xl mb-6 border border-white/10">
               ✈️
@@ -1127,7 +1128,7 @@ function Sustainability() {
     <section
       id="sustainability"
       className="py-24"
-      style={{ background: 'linear-gradient(160deg, #052e16 0%, #064e3b 50%, #065f46 100%)' }}
+      style={{ background: 'linear-gradient(160deg, #32CD32 0%, #064e3b 30%, #32CD32 100%)' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
@@ -1362,7 +1363,7 @@ function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-stone-900 text-white">
+    <footer className="text-white" style={{ background: '#166534' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
@@ -1380,7 +1381,7 @@ function Footer() {
               Sustainable agro-farming for local markets and global export. Fresh from the farm — for home
               and the world.
             </p>
-            <p className="text-emerald-400 text-sm font-medium">contact@lafresh.com</p>
+            <p className="text-emerald-400 text-sm font-medium">infor@lafresh.com</p>
           </div>
 
           {/* Quick Links */}
