@@ -648,7 +648,7 @@ function About() {
             {/* Hero visual card */}
             <div
               className="relative rounded-3xl overflow-hidden h-52"
-              style={{ background: 'linear-gradient(135deg, #065f46 0%, #047857 55%, #10b981 100%)' }}
+              style={{ background: 'linear-gradient(135deg, #32CD32 0%, #047857 55%, #32CD32 100%)' }}
             >
               <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
                 <div className="text-6xl mb-2">🌾</div>
