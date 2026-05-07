@@ -353,7 +353,7 @@ function Navbar() {
             <img
               src={lafreshLogo}
               alt="Lafresh logo"
-              className="w-10 h-10 object-contain drop-shadow-md"
+              className="w-[100px] h-[100px] object-cover drop-shadow-md rounded-full overflow-hidden bg-white mt-[19px]"
             />
             <div className="leading-none">
               <span
@@ -364,7 +364,7 @@ function Navbar() {
                 Lafresh
               </span>
               <span
-                className={`text-[11px] font-medium transition-colors duration-300 ${
+                className={`text-[15px] font-medium transition-colors duration-300 ${
                   scrolled ? 'text-emerald-700' : 'text-emerald-300'
                 }`}
               >
