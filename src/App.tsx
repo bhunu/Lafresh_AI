@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import lafreshLogo from './assets/lafresh-logo.png'
 
 // ─── Static data ──────────────────────────────────────────────────────────────
 
@@ -349,13 +350,11 @@ function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5">
-            <div
-              className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                scrolled ? 'bg-emerald-700' : 'bg-white/15 border border-white/30'
-              }`}
-            >
-              <span className="text-lg">🌿</span>
-            </div>
+            <img
+              src={lafreshLogo}
+              alt="Lafresh logo"
+              className="w-10 h-10 object-contain drop-shadow-md"
+            />
             <div className="leading-none">
               <span
                 className={`font-bold text-base tracking-tight block transition-colors duration-300 ${
