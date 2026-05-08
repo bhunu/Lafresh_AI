@@ -197,7 +197,7 @@ const HORTICULTURE_PRODUCTS = [
     harvestDate: "May 4, 2026",
     description: "Premium cut roses, export-grade quality",
     availability: "Limited Stock",
-    price: "$5.00",
+    price: "$5",
     unit: "bunch"
   },
   {
@@ -868,12 +868,16 @@ function CatalogModal({ title, subtitle, products, onClose }: {
                   {product.availability}
                 </span>
                 <div className="flex items-center justify-between mt-auto pt-4">
-                  <span className="text-xl font-bold text-[#32CD32]">{product.price}/{product.unit}</span>
+                  <span className="text-base font-bold text-[#32CD32]">{product.price}/{product.unit}</span>
                   <button
                     onClick={() => alert(`Added ${product.name} to cart!`)}
-                    className="btn-shimmer px-4 py-2 rounded-full bg-[#32CD32] text-white font-semibold text-sm hover:bg-[#2DBD2D] transition-colors"
+                    className="btn-shimmer p-3 rounded-full bg-[#32CD32] text-white hover:bg-[#2DBD2D] transition-colors"
+                    aria-label="Add to cart"
                   >
-                    Add to Cart
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
                   </button>
                 </div>
               </div>
