@@ -1226,10 +1226,39 @@ function Testimonials() {
 function Contact() {
   const [form, setForm] = useState({ name: '', email: '', type: 'domestic', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [statusMsg, setStatusMsg] = useState<{ ok: boolean; text: string } | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const showStatus = (ok: boolean, text: string) => {
+    setStatusMsg({ ok, text })
+    setTimeout(() => setStatusMsg(null), 5000)
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      showStatus(false, 'Name, email, and message are required.')
+      return
+    }
+    if (loading) return
+    setLoading(true)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setSubmitted(true)
+      } else {
+        showStatus(false, data.error || 'Something went wrong. Please try again.')
+      }
+    } catch {
+      showStatus(false, 'Network error. Please check your connection and try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const inputClass =
@@ -1256,8 +1285,8 @@ function Contact() {
 
             <div className="space-y-3">
               {[
-                { emoji: '📧', label: 'General Inquiries', value: 'info@lafresh.co.zw' },
-                { emoji: '🌍', label: 'Export Partnerships', value: 'info.exports@lafresh.co.zw' },
+                { emoji: '📧', label: 'General Inquiries', value: 'infor@lafresh.co.zw' },
+                { emoji: '🌍', label: 'Export Partnerships', value: 'infor.exports@lafresh.co.zw' },
                 { emoji: '📍', label: 'Headquarters', value: 'Harare, Zimbabwe' },
               ].map((item) => (
                 <div
@@ -1346,11 +1375,17 @@ function Contact() {
                   />
                 </div>
 
+                {statusMsg && (
+                  <p className={`text-sm font-medium ${statusMsg.ok ? 'text-emerald-600' : 'text-red-600'}`}>
+                    {statusMsg.text}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="btn-shimmer w-full py-3.5 rounded-xl bg-emerald-700 text-white font-semibold text-sm hover:bg-emerald-800 transition-colors hover:shadow-lg hover:shadow-emerald-700/20"
+                  disabled={loading}
+                  className="btn-shimmer w-full py-3.5 rounded-xl bg-emerald-700 text-white font-semibold text-sm hover:bg-emerald-800 transition-colors hover:shadow-lg hover:shadow-emerald-700/20 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Send Message →
+                  {loading ? 'Sending...' : 'Send Message →'}
                 </button>
               </form>
             )}
@@ -1385,7 +1420,7 @@ function Footer() {
               Sustainable agro-farming for local markets and global export. Fresh from the farm — for home
               and the world.
             </p>
-            <p className="text-emerald-400 text-sm font-medium">infor@lafresh.com</p>
+            <p className="text-emerald-400 text-sm font-medium">infor@lafresh.co.zw</p>
           </div>
 
           {/* Quick Links */}
