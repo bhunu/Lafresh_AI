@@ -18,7 +18,7 @@ const DIVISIONS = [
   {
     id: 'crops',
     title: 'Seasonal Crops',
-    emoji: '🌾',
+    image: '/slides/maize.jpg',
     tagline: 'Farm-fresh staples, every season',
     description:
       'We cultivate high-yield seasonal crops aligned with market demand and growing conditions, ensuring year-round supply to homes, retailers, and processors.',
@@ -29,7 +29,7 @@ const DIVISIONS = [
   {
     id: 'horticulture',
     title: 'Horticulture',
-    emoji: '🌿',
+    image: '/slides/horticulture.jpg',
     tagline: 'Premium fruits, flowers & vegetables',
     description:
       'Using precision farming and greenhouse techniques, we grow export-grade fruits, exotic vegetables, and cut flowers that meet international phytosanitary standards.',
@@ -40,7 +40,7 @@ const DIVISIONS = [
   {
     id: 'livestock',
     title: 'Livestock',
-    emoji: '🐄',
+    image: '/slides/cattle.jpg',
     tagline: 'Ethically raised, naturally better',
     description:
       'Our livestock operations follow humane and ethical standards — open grazing, natural feed, and zero growth hormones — delivering premium meat, dairy, and poultry.',
@@ -53,7 +53,7 @@ const DIVISIONS = [
 const SEASONS = [
   {
     name: 'Rainy Season',
-    emoji: '🌧️',
+    image: '/images/rain.jpg',
     months: 'November – March',
     crops: ['Maize', 'Groundnuts', 'Sorghum', 'Sunflowers'],
     horticulture: 'Mangoes & Chilies',
@@ -65,7 +65,7 @@ const SEASONS = [
   },
   {
     name: 'Winter',
-    emoji: '❄️',
+    image: '/images/winter.jpg',
     months: 'May – August',
     crops: ['Wheat', 'Barley', 'Potatoes', 'Tomatoes'],
     horticulture: 'Cut Flowers & Herbs',
@@ -77,7 +77,7 @@ const SEASONS = [
   },
   {
     name: 'Spring (Hot Dry)',
-    emoji: '☀️',
+    image: '/images/spring.jpg',
     months: 'September – October',
     crops: ['Beans', 'Cowpeas', 'Sorghum'],
     horticulture: 'Avocados & Citrus',
@@ -91,22 +91,22 @@ const SEASONS = [
 
 const PILLARS = [
   {
-    emoji: '💧',
+    image: '/images/water.jpg',
     title: 'Water Conservation',
     body: 'Drip irrigation and rainwater harvesting reduce water consumption by up to 40% compared to conventional methods.',
   },
   {
-    emoji: '🌱',
+    image: '/images/organic.jpg',
     title: 'Chemical-Free Farming',
     body: 'Certified organic fertilizers and integrated pest management protect soil health, consumers, and local ecosystems.',
   },
   {
-    emoji: '🐄',
+    image: '/slides/cattle.jpg',
     title: 'Ethical Livestock',
     body: 'Open-grazing practices, natural feed, and zero growth hormones ensure animal welfare and superior product quality.',
   },
   {
-    emoji: '♻️',
+    image: '/images/compost.jpg',
     title: 'Zero-Waste Goal',
     body: 'Crop residues are composted and returned to the soil, closing the nutrient loop and reducing landfill dependence.',
   },
@@ -261,13 +261,10 @@ const HERO_SLIDES = [
     image: '/slides/cattle.jpg',
     fallback: 'linear-gradient(135deg, #1c1917 0%, #3c3530 35%, #57534e 65%, #292524 100%)',
     overlay: 'rgba(5, 8, 3, 0.52)',
-    primary: '🐄',
-    decor: ['🌿', '🥩', '🐄'],
-    halo: '#d6d3d1',
   },
   {
     id: 'roadrunners',
-    tag: '🌈 Farm Produce',
+    tag: 'Farm Produce',
     title: "Nature's Full Bounty",
     subtitle: 'Every colour, every flavour',
     statement:
@@ -275,13 +272,10 @@ const HERO_SLIDES = [
     image: '/slides/roadrunners.jpg',
     fallback: 'linear-gradient(135deg, #14532d 0%, #065f46 35%, #0f766e 65%, #134e4a 100%)',
     overlay: 'rgba(5, 15, 5, 0.48)',
-    primary: '🍇',
-    decor: ['🍌', '🍎', ''],
-    halo: '#fb923c',
   },
   {
     id: 'goats',
-    tag: ' Livestock',
+    tag: 'Livestock',
     title: 'Goat Farming',
     subtitle: 'Well-kept, naturally healthy',
     statement:
@@ -289,13 +283,10 @@ const HERO_SLIDES = [
     image: '/slides/goats.jpg',
     fallback: 'linear-gradient(135deg, #365314 0%, #4d7c0f 35%, #65a30d 65%, #3f6212 100%)',
     overlay: 'rgba(5, 12, 3, 0.50)',
-    primary: '',
-    decor: ['🌾', '🥛', '🌿'],
-    halo: '#a3e635',
   },
   {
     id: 'horticulture',
-    tag: '🌿 Horticulture',
+    tag: 'Horticulture',
     title: 'Fresh Green Produce',
     subtitle: 'Crisp, clean and export-ready',
     statement:
@@ -303,9 +294,6 @@ const HERO_SLIDES = [
     image: '/slides/horticulture.jpg',
     fallback: 'linear-gradient(135deg, #052e16 0%, #064e3b 35%, #065f46 65%, #14532d 100%)',
     overlay: 'rgba(3, 15, 5, 0.48)',
-    primary: '🥬',
-    decor: ['🌽', '🥒', '🫑'],
-    halo: '#34d399',
   },
 ]
 
@@ -720,7 +708,7 @@ function About() {
           {/* Left — text */}
           <div>
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold tracking-widest uppercase mb-6">
-              🌱 About Lafresh
+              About Lafresh
             </span>
             <h2 className="text-4xl sm:text-5xl font-bold text-stone-900 leading-tight mb-6">
               Rooted in the land,{' '}
@@ -754,16 +742,16 @@ function About() {
           {/* Right — visual + stats */}
           <div className="space-y-5">
             {/* Hero visual card */}
-            <div
-              className="relative rounded-3xl overflow-hidden h-52"
-              style={{ background: 'linear-gradient(135deg, #32CD32 0%, #047857 55%, #32CD32 100%)' }}
-            >
+            <div className="relative rounded-3xl overflow-hidden h-52">
+              <img
+                src="/images/farm.jpg"
+                alt="Lafresh farm"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0" style={{ background: 'rgba(4, 120, 87, 0.62)' }} />
               <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-                <div className="text-6xl mb-2">🌾</div>
                 <p className="text-emerald-200 font-medium text-sm">Sustainably grown · Responsibly traded</p>
               </div>
-              <div className="absolute top-4 right-5 text-5xl opacity-15 select-none">🌿</div>
-              <div className="absolute bottom-4 left-5 text-4xl opacity-15 select-none">🌱</div>
             </div>
 
             {/* Stats grid */}
@@ -938,8 +926,8 @@ function CoreDivisions() {
                 className={`rounded-3xl border ${s.border} ${s.bg} p-8 flex flex-col hover:shadow-xl hover:-translate-y-1 hover:ring-4 ${s.ring} transition-all duration-300`}
               >
                 <div className="flex items-center justify-between mb-7">
-                  <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-3xl">
-                    {div.emoji}
+                  <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-sm">
+                    <img src={div.image} alt={div.title} className="w-full h-full object-cover" />
                   </div>
                   <span className={`text-xs font-bold px-3 py-1 rounded-full ${s.tag}`}>Division</span>
                 </div>
@@ -996,8 +984,8 @@ function MarketFocus() {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Domestic */}
           <div className="bg-white rounded-3xl p-10 border border-stone-100 shadow-sm hover:shadow-lg transition-shadow">
-            <div className="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center text-3xl mb-6">
-              🏪
+            <div className="w-16 h-16 rounded-2xl overflow-hidden mb-6 shadow-sm">
+              <img src="/images/market.jpg" alt="Local market" className="w-full h-full object-cover" />
             </div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
@@ -1030,8 +1018,8 @@ function MarketFocus() {
             className="rounded-3xl p-10 text-white hover:shadow-xl hover:shadow-emerald-900/20 transition-shadow"
             style={{ background: 'linear-gradient(135deg, #32CD32 0%, #047857 50%, #32CD32 100%)' }}
           >
-            <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center text-3xl mb-6 border border-white/10">
-              ✈️
+            <div className="w-16 h-16 rounded-2xl overflow-hidden mb-6 shadow-sm">
+              <img src="/images/export.jpg" alt="International export" className="w-full h-full object-cover" />
             </div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-emerald-200 text-xs font-semibold mb-5 border border-white/15">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-300" />
@@ -1072,7 +1060,7 @@ function SeasonalCalendar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold tracking-widest uppercase mb-4">
-            🗓 Seasonal Availability
+            Seasonal Availability
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-stone-900 mb-4">What's in Season</h2>
           <p className="text-stone-500 text-lg max-w-2xl mx-auto">
@@ -1088,7 +1076,9 @@ function SeasonalCalendar() {
               className={`rounded-3xl border ${s.border} ${s.bg} p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300`}
             >
               <div className="text-center mb-7">
-                <div className="text-5xl mb-3">{s.emoji}</div>
+                <div className="w-12 h-12 rounded-2xl overflow-hidden mx-auto mb-3 shadow-sm">
+                  <img src={s.image} alt={s.name} className="w-full h-full object-cover" />
+                </div>
                 <h3 className={`text-2xl font-bold ${s.heading} mb-1`}>{s.name}</h3>
                 <p className="text-xs text-stone-400 font-medium tracking-wide">{s.months}</p>
               </div>
@@ -1113,7 +1103,7 @@ function SeasonalCalendar() {
                     Horticulture
                   </p>
                   <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold ${s.badge}`}>
-                    🌿 {s.horticulture}
+                    {s.horticulture}
                   </span>
                 </div>
               </div>
@@ -1152,8 +1142,8 @@ function Sustainability() {
               key={p.title}
               className="bg-emerald-900/40 rounded-3xl p-8 border border-emerald-800/50 hover:bg-emerald-800/50 hover:border-emerald-600/60 hover:-translate-y-1 transition-all duration-300 group"
             >
-              <div className="w-14 h-14 rounded-2xl bg-emerald-800/60 flex items-center justify-center text-3xl mb-6 group-hover:bg-emerald-700/60 transition-colors">
-                {p.emoji}
+              <div className="w-14 h-14 rounded-2xl overflow-hidden mb-6 shadow-sm">
+                <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
               </div>
               <h3 className="text-lg font-bold text-white mb-3">{p.title}</h3>
               <p className="text-emerald-200/55 text-sm leading-relaxed">{p.body}</p>
@@ -1285,16 +1275,37 @@ function Contact() {
 
             <div className="space-y-3">
               {[
-                { emoji: '📧', label: 'General Inquiries', value: 'infor@lafresh.co.zw' },
-                { emoji: '🌍', label: 'Export Partnerships', value: 'infor.exports@lafresh.co.zw' },
-                { emoji: '📍', label: 'Headquarters', value: 'Harare, Zimbabwe' },
+                {
+                  icon: (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-emerald-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                      <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    </svg>
+                  ),
+                  label: 'General Inquiries', value: 'infor@lafresh.co.zw',
+                },
+                {
+                  icon: (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-emerald-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
+                    </svg>
+                  ),
+                  label: 'Export Partnerships', value: 'infor.exports@lafresh.co.zw',
+                },
+                {
+                  icon: (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-emerald-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+                    </svg>
+                  ),
+                  label: 'Headquarters', value: 'Harare, Zimbabwe',
+                },
               ].map((item) => (
                 <div
                   key={item.label}
                   className="flex items-center gap-4 p-4 rounded-2xl bg-stone-50 border border-stone-100"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-xl flex-shrink-0">
-                    {item.emoji}
+                  <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                    {item.icon}
                   </div>
                   <div>
                     <p className="text-xs text-stone-400 font-medium">{item.label}</p>
@@ -1309,7 +1320,11 @@ function Contact() {
           <div className="bg-stone-50 rounded-3xl p-8 border border-stone-100">
             {submitted ? (
               <div className="py-12 flex flex-col items-center justify-center text-center">
-                <div className="text-6xl mb-4">✅</div>
+                <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 6 9 17l-5-5"/>
+                  </svg>
+                </div>
                 <h3 className="text-2xl font-bold text-stone-900 mb-2">Message Received!</h3>
                 <p className="text-stone-500 text-sm">
                   Our team will get back to you within 24 business hours.
@@ -1408,9 +1423,7 @@ function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-full bg-emerald-700 flex items-center justify-center text-lg">
-                🌿
-              </div>
+              <img src={lafreshLogo} alt="Lafresh" className="w-9 h-9 rounded-full object-cover" />
               <div className="leading-none">
                 <span className="font-bold text-white block">Lafresh</span>
                 <span className="text-xs text-emerald-400">Private Limited</span>
@@ -1445,14 +1458,14 @@ function Footer() {
             <h4 className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-5">Our Business</h4>
             <ul className="space-y-3">
               {[
-                { emoji: '🌾', label: 'Seasonal Crops' },
-                { emoji: '🌿', label: 'Horticulture' },
-                { emoji: '🐄', label: 'Livestock' },
-                { emoji: '🏪', label: 'Domestic Supply' },
-                { emoji: '✈️', label: 'International Export' },
+                { src: '/slides/maize.jpg', label: 'Seasonal Crops' },
+                { src: '/slides/horticulture.jpg', label: 'Horticulture' },
+                { src: '/slides/cattle.jpg', label: 'Livestock' },
+                { src: '/images/market.jpg', label: 'Domestic Supply' },
+                { src: '/images/export.jpg', label: 'International Export' },
               ].map((item) => (
                 <li key={item.label} className="flex items-center gap-2 text-stone-400 text-sm">
-                  <span>{item.emoji}</span>
+                  <img src={item.src} alt={item.label} className="w-5 h-5 rounded object-cover flex-shrink-0" />
                   {item.label}
                 </li>
               ))}
